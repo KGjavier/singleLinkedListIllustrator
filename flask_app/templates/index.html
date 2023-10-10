@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles.css') }}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Single Linked List Illustrator</title>
+</head>
+<body>
+    <div class="mainContainer1">
+        <h1>Single Linked List Illustrator</h1>
+        <h2>Current Linked List:</h2>
+            <div class="nodeMainContainer">
+            {% for node in list_data %}
+                <div class="nodeSubContainer">
+                    <div class="circle" style="background: {{ node.color }}; color: #ffffff;">{{ node.value }}</div>
+                </div>
+            {% endfor %}
+            </div>
+        <h2>Current Length: {{ length }}</h2>
+    </div>
+    <form method="POST" action="/update_nodes">
+        <label for="current_method">Select Operation:</label>
+        <select name="current_method" id="current_method">
+            <option value="insert">Insert</option>
+            <option value="push">Push</option>
+            <option value="pop">Pop</option>
+            <option value="shift">Shift</option>
+            <option value="unshift">Unshift</option>
+            <option value="set">Set</option>
+            <option value="remove">Remove</option>
+            <option value="reverse">Reverse</option>
+        </select>
+        <div class="idContainer">
+            <div id="valueContainer">
+                <label for="value">Value:</label>
+                <input type="text" name="value" id="value">
+            </div>
+    
+            <div id="colorContainer">
+                <label for="color">Color:</label>
+                <input type="text" name="color" id="color">
+            </div>
+    
+            <div id="indexContainer">
+                <label for="index_value">Index:</label>
+                <input type="text" name="index_value" id="index_value">
+            </div>
+        </div>
+        <button type="submit">RUN</button>
+    </form>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>
